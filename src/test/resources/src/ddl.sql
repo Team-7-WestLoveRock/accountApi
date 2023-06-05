@@ -3,7 +3,7 @@ create table if not exists Accounts
     idx          bigint auto_increment
     primary key,
     user_id      varchar(45)                 not null,
-    password     varchar(45)                 not null,
+    password     varchar(60)                 not null,
     name         varchar(60)                 not null,
     nickname     varchar(15)                 null,
     state        varchar(10)                 not null,
