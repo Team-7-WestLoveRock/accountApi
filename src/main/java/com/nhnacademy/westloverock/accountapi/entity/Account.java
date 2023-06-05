@@ -17,25 +17,25 @@ import java.util.List;
 public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idx")
+    @Column
     private Long idx;
 
     @Column(name = "user_id")
     private String userId;
 
-    @Column(name = "password")
+    @Column
     private String password;
 
-    @Column(name = "name")
+    @Column
     private String name;
 
-    @Column(name = "nickname")
+    @Column
     private String nickname;
 
     @Enumerated(EnumType.STRING)
     private State state;
 
-    @Column(name = "email")
+    @Column
     private String email;
 
     @Column(name = "phone_number")
