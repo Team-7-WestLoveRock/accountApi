@@ -1,10 +1,8 @@
 package com.nhnacademy.westloverock.accountapi.entity;
 
 import lombok.*;
-import org.springframework.cglib.core.Local;
 
 import javax.persistence.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @AllArgsConstructor
@@ -18,23 +16,23 @@ public class LoginLogs {
     @Column(name = "account_idx")
     private Long accountIdx;
 
-    @Column
+    @Column(name = "login_date")
     private LocalDateTime loginDate;
 
-    @Column
+    @Column(name = "ip_address")
     private String ipAddress;
 
     @ManyToOne
     @MapsId("accountIdx")
     @JoinColumn(name = "account_idx")
-    private Accounts accounts;
+    private Account account;
 
     @Builder
-    public LoginLogs(LocalDateTime loginDate, String ipAddress, Accounts accounts) {
+    public LoginLogs(LocalDateTime loginDate, String ipAddress, Account account) {
         this.loginDate = loginDate;
         this.ipAddress = ipAddress;
-        this.accounts = accounts;
-        this.accountIdx = accounts.getIdx();
+        this.account = account;
+        this.accountIdx = account.getIdx();
     }
 
 }

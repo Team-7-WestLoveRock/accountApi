@@ -1,7 +1,6 @@
 package com.nhnacademy.westloverock.accountapi.entity;
 
 import com.nhnacademy.westloverock.accountapi.domain.State;
-import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,39 +14,39 @@ import java.util.List;
 @ToString
 @Entity
 @Table(name = "Accounts")
-public class Accounts {
+public class Account {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column
+    @Column(name = "idx")
     private Long idx;
 
-    @Column
+    @Column(name = "user_id")
     private String userId;
 
-    @Column
+    @Column(name = "password")
     private String password;
 
-    @Column
+    @Column(name = "name")
     private String name;
 
-    @Column
+    @Column(name = "nickname")
     private String nickname;
 
     @Enumerated(EnumType.STRING)
     private State state;
 
-    @Column
+    @Column(name = "email")
     private String email;
 
-    @Column
+    @Column(name = "phone_number")
     private String phoneNumber;
 
     // ToDo 값이 정확히 들어오는지 확인 요망
-    @OneToMany(mappedBy = "accounts")
+    @OneToMany(mappedBy = "account")
     List<LoginLogs> loginLogsList = new ArrayList<>();
 
     @Builder
-    public Accounts(String userId, String password, String name, String nickname, State state, String email, String phoneNumber) {
+    public Account(String userId, String password, String name, String nickname, State state, String email, String phoneNumber) {
         this.userId = userId;
         this.password = password;
         this.name = name;

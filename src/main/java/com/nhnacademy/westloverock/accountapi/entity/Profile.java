@@ -11,23 +11,23 @@ import javax.persistence.*;
 @ToString
 @Entity
 @Table(name = "Profiles")
-public class Profiles {
+public class Profile {
 
     @Id
     @Column(name = "account_idx")
     private Long accountIdx;
-    @Column
+    @Column(name = "image_path")
     private String imagePath;
 
     @OneToOne
     @MapsId("accountIdx")
     @JoinColumn(name = "account_idx")
-    private Accounts accounts;
+    private Account account;
 
     @Builder
-    public Profiles(String imagePath, Accounts accounts) {
-        this.accounts = accounts;
-        this.accountIdx = accounts.getIdx();
+    public Profile(String imagePath, Account account) {
+        this.account = account;
+        this.accountIdx = account.getIdx();
         this.imagePath = imagePath;
     }
 }

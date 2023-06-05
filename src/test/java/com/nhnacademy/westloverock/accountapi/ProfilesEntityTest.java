@@ -1,8 +1,8 @@
 package com.nhnacademy.westloverock.accountapi;
 
 import com.nhnacademy.westloverock.accountapi.domain.State;
-import com.nhnacademy.westloverock.accountapi.entity.Accounts;
-import com.nhnacademy.westloverock.accountapi.entity.Profiles;
+import com.nhnacademy.westloverock.accountapi.entity.Account;
+import com.nhnacademy.westloverock.accountapi.entity.Profile;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -19,7 +19,7 @@ public class ProfilesEntityTest {
     private EntityManager entityManager;
     @Test
     public void testProfilesEntity() {
-        Accounts accounts = Accounts.builder()
+        Account accounts = Account.builder()
                 .userId("qaz")
                 .password("qdadqwe")
                 .name("choo")
@@ -31,8 +31,8 @@ public class ProfilesEntityTest {
 
         entityManager.persist(accounts);
 
-        Profiles profiles = Profiles.builder()
-                .accounts(accounts)
+        Profile profiles = Profile.builder()
+                .account(accounts)
                 .imagePath("123qeasdasdas")
                 .build();
 

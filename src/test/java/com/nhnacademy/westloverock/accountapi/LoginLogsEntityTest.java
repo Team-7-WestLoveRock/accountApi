@@ -1,7 +1,7 @@
 package com.nhnacademy.westloverock.accountapi;
 
 import com.nhnacademy.westloverock.accountapi.domain.State;
-import com.nhnacademy.westloverock.accountapi.entity.Accounts;
+import com.nhnacademy.westloverock.accountapi.entity.Account;
 import com.nhnacademy.westloverock.accountapi.entity.LoginLogs;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -23,7 +23,7 @@ public class LoginLogsEntityTest {
     private EntityManager entityManager;
     @Test
     public void testLoginLogsEntity() {
-        Accounts accounts = Accounts.builder()
+        Account accounts = Account.builder()
                 .userId("qaz")
                 .password("qdadqwe")
                 .name("choo")
@@ -36,7 +36,7 @@ public class LoginLogsEntityTest {
         entityManager.persist(accounts);
         System.out.println("accounts idx: {}" + accounts.getIdx());
 
-        Accounts accounts2 = Accounts.builder()
+        Account accounts2 = Account.builder()
                 .userId("qaz")
                 .password("qdadqwe")
                 .name("choo")
@@ -50,14 +50,14 @@ public class LoginLogsEntityTest {
         System.out.println("accounts2 idx: {}" + accounts2.getIdx());
 
         LoginLogs loginLogs = LoginLogs.builder()
-                .accounts(accounts)
+                .account(accounts)
                 .loginDate(LocalDateTime.now())
                 .ipAddress("19123")
                 .build();
         entityManager.persist(loginLogs);
 
         LoginLogs loginLogs2 = LoginLogs.builder()
-                .accounts(accounts2)
+                .account(accounts2)
                 .loginDate(LocalDateTime.now())
                 .ipAddress("9999")
                 .build();
