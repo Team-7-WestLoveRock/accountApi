@@ -6,9 +6,11 @@
 
 - 회원 정보를 제공하며, 회원의 상태(가입, 탈퇴, 휴면)를 관리합니다.
   
-<br><br>
+<br>
 
 # API SPEC
+
+## Account
 
 **GET /account/api/accounts/{userId}**  
 ex) 사용자 최소 정보 조회  
@@ -20,7 +22,7 @@ Response
     "email": "westloverock@github.com"
 }
 ```
----
+
 **POST /account/api/accounts**  
 ex) 사용자 등록  
 Request
@@ -40,7 +42,7 @@ Response
     "createdAt" : "2023-06-06"
 }
 ```
----
+
 **POST /account/api/accounts/{userId}**   
 ex) 사용자의 상태 변경  
 Request
@@ -55,7 +57,6 @@ Response
     "state": "휴면"
 }
 ```
----
 **PUT /account/api/accounts/{userId}**  
 ex) 사용자의 정보 변경  
 Request
@@ -80,3 +81,70 @@ Response
     "phoneNumber": null
 }
 ```
+
+---
+
+## Profile
+
+**POST /account/api/accounts/{userId}/profile**     
+ex) 사용자 프로필 정보 변경 (등록, 수정, 삭제)  
+
+Request
+```json
+{
+    "imagePath": "/src/static/useridProfileImage1"
+}
+```
+
+
+## LoginLog
+**GET /account/api/accounts/{userId}/loginLogs**  
+ex) 사용자 로그인 기록 조회    
+Response
+```json
+[
+    {
+        "loginDate": "2023-06-06T12:00:00",
+        "ipAddress": "127.0.0.1"
+    },
+    {
+        "loginDate": "2023-06-07T12:00:00",
+        "ipAddress": "127.0.0.1"
+    }
+]
+```
+
+**GET /account/api/accounts/{userId}/loginLogs/last**  
+ex) 사용자 로그인 마지막 기록 조회    
+Response
+```json
+{
+    "loginDate": "2023-06-06T12:00:00",
+    "ipAddress": "127.0.0.1"
+}
+```
+
+**POST /account/api/accounts/{userId}/loginLog**  
+ex) 사용자 로그인 시간 기록   
+Request
+```json
+{
+    "ipAddress": "127.0.0.1"
+}
+```
+
+Response
+```json
+{
+    "loginDate": "2023-06-06T12:00:00"
+}
+```
+
+
+
+
+
+
+
+
+
