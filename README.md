@@ -15,9 +15,9 @@ ex) 사용자 최소 정보 조회
 Response
 ```json
 {
-    'userId': 'westloverock',
-    'password': '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92',
-    'email': 'westloverock@github.com'
+    "userId": "westloverock",
+    "password": "8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92",
+    "email": "westloverock@github.com"
 }
 ```
 ---
@@ -26,18 +26,18 @@ ex) 사용자 등록
 Request
 ```json
 {
-    'userId': 'westloverock',
-    'password': 'westloverockPassword',
-    'name': '서정석',
-    'nickname': null,
-    'email': 'westloverock@github.com',
-    'phoneNumber': null
+    "userId": "westloverock",
+    "password": "westloverockPassword",
+    "name": "서정석",
+    "nickname": null,
+    "email": "westloverock@github.com",
+    "phoneNumber": null
 }
 ```
 Response
 ```json
 {
-    'createdAt' : 2023-06-06
+    "createdAt" : 2023-06-06
 }
 ```
 ---
@@ -46,13 +46,13 @@ ex) 사용자의 상태 변경
 Request
 ```json
 {
-    'state': '휴면'
+    "state": "휴면"
 }
 ```
 Response
 ```json
 {
-    'state': '휴면'
+    "state": "휴면"
 }
 ```
 ---
@@ -61,22 +61,22 @@ ex) 사용자의 정보 변경
 Request
 ```json
 {
-    'userId': 'westloverock',
-    'password': 'westloverockPassword',
-    'name': '서정석',
-    'nickname': '서경석',
-    'email': 'westloverock@github.com',
-    'phoneNumber': null
+    "userId": "westloverock",
+    "password": "westloverockPassword",
+    "name": "서정석",
+    "nickname": "서경석",
+    "email": "westloverock@github.com",
+    "phoneNumber": null
 }
 ```
 Response
 ```json
 {
-    'userId': 'westloverock',
-    'password': 'westloverockPassword',
-    'name': '서정석',
-    'nickname': '서경석',
-    'email': 'westloverock@github.com',
-    'phoneNumber': null
+    "userId": "westloverock",
+    "password": "westloverockPassword",
+    "name": "서정석",
+    "nickname": "서경석",
+    "email": "westloverock@github.com",
+    "phoneNumber": null
 }
 ```
