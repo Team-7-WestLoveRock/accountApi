@@ -37,7 +37,7 @@ Request
 Response
 ```json
 {
-    "createdAt" : 2023-06-06
+    "createdAt" : "2023-06-06"
 }
 ```
 ---
