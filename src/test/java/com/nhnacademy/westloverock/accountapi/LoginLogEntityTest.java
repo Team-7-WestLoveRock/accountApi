@@ -2,7 +2,7 @@ package com.nhnacademy.westloverock.accountapi;
 
 import com.nhnacademy.westloverock.accountapi.domain.State;
 import com.nhnacademy.westloverock.accountapi.entity.Account;
-import com.nhnacademy.westloverock.accountapi.entity.LoginLogs;
+import com.nhnacademy.westloverock.accountapi.entity.LoginLog;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
@@ -18,7 +18,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ActiveProfiles("dev")
 @SpringBootTest
 @Transactional
-public class LoginLogsEntityTest {
+public class LoginLogEntityTest {
     @PersistenceContext
     private EntityManager entityManager;
     @Test
@@ -27,7 +27,7 @@ public class LoginLogsEntityTest {
                 .userId("qaz")
                 .password("qdadqwe")
                 .name("choo")
-                .nickname("asdasdasd")
+                .nickname("한글이요")
                 .state(State.ACTIVE)
                 .email("asdasd@naver.com")
                 .phoneNumber("010-3129-4545")
@@ -49,23 +49,23 @@ public class LoginLogsEntityTest {
         entityManager.persist(accounts2);
         System.out.println("accounts2 idx: {}" + accounts2.getIdx());
 
-        LoginLogs loginLogs = LoginLogs.builder()
+        LoginLog loginLog = LoginLog.builder()
                 .account(accounts)
                 .loginDate(LocalDateTime.now())
                 .ipAddress("19123")
                 .build();
-        entityManager.persist(loginLogs);
+        entityManager.persist(loginLog);
 
-        LoginLogs loginLogs2 = LoginLogs.builder()
+        LoginLog loginLog2 = LoginLog.builder()
                 .account(accounts2)
                 .loginDate(LocalDateTime.now())
                 .ipAddress("9999")
                 .build();
 
-        entityManager.persist(loginLogs2);
+        entityManager.persist(loginLog2);
 
-        assertThat(entityManager.find(LoginLogs.class, 1L)).isNotNull();
-        assertThat(entityManager.find(LoginLogs.class, 5L)).isNull();
+        assertThat(entityManager.find(LoginLog.class, 1L)).isNotNull();
+        assertThat(entityManager.find(LoginLog.class, 5L)).isNull();
 
         entityManager.flush();
     }

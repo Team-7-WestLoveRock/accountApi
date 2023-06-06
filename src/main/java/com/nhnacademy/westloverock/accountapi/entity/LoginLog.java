@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 @EqualsAndHashCode
 @Entity
 @Table(name = "Login_Logs")
-public class LoginLogs {
+public class LoginLog {
     @Id
     @Column(name = "account_idx")
     private Long accountIdx;
@@ -28,7 +28,7 @@ public class LoginLogs {
     private Account account;
 
     @Builder
-    public LoginLogs(LocalDateTime loginDate, String ipAddress, Account account) {
+    public LoginLog(LocalDateTime loginDate, String ipAddress, Account account) {
         this.loginDate = loginDate;
         this.ipAddress = ipAddress;
         this.account = account;

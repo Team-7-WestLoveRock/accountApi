@@ -43,7 +43,7 @@ public class Account {
 
     // ToDo 값이 정확히 들어오는지 확인 요망
     @OneToMany(mappedBy = "account")
-    List<LoginLogs> loginLogsList = new ArrayList<>();
+    List<LoginLog> loginLogList = new ArrayList<>();
 
     @Builder
     public Account(String userId, String password, String name, String nickname, State state, String email, String phoneNumber) {
