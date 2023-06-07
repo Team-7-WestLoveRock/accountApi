@@ -1,0 +1,29 @@
+POST /account/api/accounts
+Host: localhost:1999
+Content-Type: application/json
+
+{
+    "userId": "westloverock",
+    "password": "westloverockPassword",
+    "name": "서정석",
+    "nickname": null,
+    "email": "westloverock@github.com",
+    "phoneNumber": null
+}
+
+###
+
+GET /account/api/accounts/westloverock
+Host: localhost:1999
+
+###
+
+POST /account/api/accounts/westloverock
+Host: localhost:1999
+Content-Type: application/json
+
+{
+  "state": "휴면"
+}
+
+###
