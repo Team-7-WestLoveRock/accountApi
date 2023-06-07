@@ -21,7 +21,7 @@ import java.util.Map;
 public class AccountController {
     private final AccountService accountService;
 
-    @GetMapping("{userId}")
+    @GetMapping("/{userId}")
     public HttpEntity<AccountInformationDto> findAccount(@PathVariable String userId) {
         return new ResponseEntity<>(accountService.findAccount(userId), HttpStatus.OK);
     }
@@ -32,7 +32,7 @@ public class AccountController {
     }
 
     @PostMapping
-    public HttpEntity<Map<String, LocalDate>> saveAccount(@RequestBody AccountRegisterRequest accountRegisterRequest) {
+    public HttpEntity<Map<String, LocalDate>> createAccount(@RequestBody AccountRegisterRequest accountRegisterRequest) {
         accountService.saveAccount(accountRegisterRequest);
         // ToDo userId가 unique이기 때문에 userId가 같다면 예외 발생
         return new ResponseEntity<>(Map.of("createdAt", LocalDate.now()), HttpStatus.CREATED);
