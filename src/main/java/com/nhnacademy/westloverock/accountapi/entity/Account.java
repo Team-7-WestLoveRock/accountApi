@@ -1,6 +1,7 @@
 package com.nhnacademy.westloverock.accountapi.entity;
 
 import com.nhnacademy.westloverock.accountapi.domain.State;
+import com.nhnacademy.westloverock.accountapi.request.AccountStateRequest;
 import lombok.*;
 
 import javax.persistence.*;
@@ -54,5 +55,8 @@ public class Account {
         this.state = state;
         this.email = email;
         this.phoneNumber = phoneNumber;
+    }
+    public void modifyStatus(AccountStateRequest accountStateRequest){
+        this.state = State.getState(accountStateRequest.getState());
     }
 }

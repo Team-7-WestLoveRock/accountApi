@@ -1,18 +1,24 @@
+# DROP TABLE IF EXISTS Login_Logs;
+# DROP TABLE IF EXISTS Profiles;
+# DROP TABLE IF EXISTS Accounts;
+
 create table if not exists Accounts
 (
-    idx          bigint auto_increment
+    idx         bigint auto_increment
         primary key,
     user_id      varchar(45)                 not null,
     password     varchar(60)                 not null,
     name         varchar(60) charset utf8mb3 not null,
     nickname     varchar(15) charset utf8mb3 null,
     state        varchar(10)                 not null,
-    email        varchar(45)                 not null,
+    email        varchar(320)                 not null,
     phone_number varchar(15)                 null,
     constraint id_UNIQUE
         unique (user_id),
     constraint idx_UNIQUE
-        unique (idx)
+        unique (idx),
+    constraint email_UNIQUE
+        unique (email)
 );
 
 create table if not exists Login_Logs
