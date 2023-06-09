@@ -1,10 +1,11 @@
 package com.nhnacademy.westloverock.accountapi.controller;
 
-import com.nhnacademy.westloverock.accountapi.domain.State;
 import com.nhnacademy.westloverock.accountapi.request.AccountRegisterRequest;
 import com.nhnacademy.westloverock.accountapi.request.AccountStateRequest;
+import com.nhnacademy.westloverock.accountapi.request.AccountUpdateRequest;
 import com.nhnacademy.westloverock.accountapi.response.AccountInformationDto;
-import com.nhnacademy.westloverock.accountapi.response.AccountStateDto;
+import com.nhnacademy.westloverock.accountapi.response.AccountUpdateDto;
+import com.nhnacademy.westloverock.accountapi.response.EmailResponseDto;
 import com.nhnacademy.westloverock.accountapi.service.AccountService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
@@ -38,5 +39,14 @@ public class AccountController {
         return new ResponseEntity<>(Map.of("createdAt", LocalDate.now()), HttpStatus.CREATED);
     }
 
+    @PutMapping("/{userId}")
+    public HttpEntity<AccountUpdateDto> updateAccountInformation(@PathVariable String userId, @RequestBody AccountUpdateRequest accountUpdateRequest) {
+        return new ResponseEntity<>(accountService.updateAccount(userId, accountUpdateRequest), HttpStatus.OK);
+    }
+
+    @GetMapping("/email/{email}")
+    public HttpEntity<EmailResponseDto> findIdByEmail(@PathVariable String email) {
+        return new ResponseEntity<>(accountService.findIdByEmail(email), HttpStatus.OK);
+    }
 
 }
