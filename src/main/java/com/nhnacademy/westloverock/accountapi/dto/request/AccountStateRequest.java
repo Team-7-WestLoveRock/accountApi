@@ -1,4 +1,4 @@
-package com.nhnacademy.westloverock.accountapi.request;
+package com.nhnacademy.westloverock.accountapi.dto.request;
 
 import com.nhnacademy.westloverock.accountapi.domain.State;
 import lombok.Getter;

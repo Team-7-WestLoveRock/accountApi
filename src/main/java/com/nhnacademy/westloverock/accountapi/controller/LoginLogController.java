@@ -1,6 +1,6 @@
 package com.nhnacademy.westloverock.accountapi.controller;
 
-import com.nhnacademy.westloverock.accountapi.request.LoginLogRegisterRequest;
+import com.nhnacademy.westloverock.accountapi.dto.request.LoginLogRegisterRequest;
 import com.nhnacademy.westloverock.accountapi.response.LoginLogDateDto;
 import com.nhnacademy.westloverock.accountapi.response.LoginLogDto;
 import com.nhnacademy.westloverock.accountapi.service.LoginLogService;
@@ -9,9 +9,6 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.time.LocalDateTime;
-import java.util.List;
 
 @RestController
 @RequestMapping("/account/api/accounts")

@@ -2,16 +2,12 @@ package com.nhnacademy.westloverock.accountapi.service;
 
 import com.nhnacademy.westloverock.accountapi.entity.Account;
 import com.nhnacademy.westloverock.accountapi.entity.Profile;
-import com.nhnacademy.westloverock.accountapi.repository.AccountRepository;
-import com.nhnacademy.westloverock.accountapi.repository.ProfileRepository;
-import com.nhnacademy.westloverock.accountapi.request.ProfileImagePathRequest;
+import com.nhnacademy.westloverock.accountapi.dto.repository.AccountRepository;
+import com.nhnacademy.westloverock.accountapi.dto.repository.ProfileRepository;
+import com.nhnacademy.westloverock.accountapi.dto.request.ProfileImagePathRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.NoSuchElementException;
-import java.util.Objects;
-import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor

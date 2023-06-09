@@ -1,4 +1,4 @@
-package com.nhnacademy.westloverock.accountapi.repository;
+package com.nhnacademy.westloverock.accountapi.dto.repository;
 
 import org.springframework.data.repository.NoRepositoryBean;
 

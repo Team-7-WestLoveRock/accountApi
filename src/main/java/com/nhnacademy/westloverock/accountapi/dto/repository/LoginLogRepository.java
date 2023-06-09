@@ -1,4 +1,4 @@
-package com.nhnacademy.westloverock.accountapi.repository;
+package com.nhnacademy.westloverock.accountapi.dto.repository;
 
 import com.nhnacademy.westloverock.accountapi.entity.LoginLog;
 import com.nhnacademy.westloverock.accountapi.response.LoginLogDto;

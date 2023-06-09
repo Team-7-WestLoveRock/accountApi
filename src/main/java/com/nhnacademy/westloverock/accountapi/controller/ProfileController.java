@@ -1,15 +1,12 @@
 package com.nhnacademy.westloverock.accountapi.controller;
 
-import com.nhnacademy.westloverock.accountapi.request.AccountStateRequest;
-import com.nhnacademy.westloverock.accountapi.request.ProfileImagePathRequest;
+import com.nhnacademy.westloverock.accountapi.dto.request.ProfileImagePathRequest;
 import com.nhnacademy.westloverock.accountapi.service.ProfileService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 @RestController
 @RequestMapping("/account/api/accounts")

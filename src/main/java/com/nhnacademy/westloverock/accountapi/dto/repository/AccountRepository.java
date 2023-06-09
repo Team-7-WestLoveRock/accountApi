@@ -1,7 +1,6 @@
-package com.nhnacademy.westloverock.accountapi.repository;
+package com.nhnacademy.westloverock.accountapi.dto.repository;
 
 import com.nhnacademy.westloverock.accountapi.entity.Account;
-import com.nhnacademy.westloverock.accountapi.request.AccountUpdateRequest;
 import com.nhnacademy.westloverock.accountapi.response.AccountInformationDto;
 import com.nhnacademy.westloverock.accountapi.response.AccountStateDto;
 import com.nhnacademy.westloverock.accountapi.response.AccountUpdateDto;
