@@ -7,7 +7,6 @@ import java.util.Arrays;
 @Getter
 public enum State {
 
-    // ToDo 맛이 갈 것 같아
     ACTIVE("활동"),
     WITHDRAWAL("탈퇴"),
     DORMANCY("휴면");

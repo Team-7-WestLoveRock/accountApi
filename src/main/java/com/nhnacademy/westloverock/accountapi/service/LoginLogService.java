@@ -5,6 +5,7 @@ import com.nhnacademy.westloverock.accountapi.entity.LoginLog;
 import com.nhnacademy.westloverock.accountapi.dto.repository.AccountRepository;
 import com.nhnacademy.westloverock.accountapi.dto.repository.LoginLogRepository;
 import com.nhnacademy.westloverock.accountapi.dto.request.LoginLogRegisterRequest;
+import com.nhnacademy.westloverock.accountapi.exception.ObjectNotFound;
 import com.nhnacademy.westloverock.accountapi.response.LoginLogDateDto;
 import com.nhnacademy.westloverock.accountapi.response.LoginLogDto;
 import lombok.RequiredArgsConstructor;
@@ -20,12 +21,12 @@ public class LoginLogService {
     private final AccountRepository accountRepository;
 
     public LoginLogDto findLoginLogInform(String userId) {
-        Long index = accountRepository.findAccountByUserId(userId).orElseThrow().getIdx();
-        return loginLogRepository.findLoginLogByAccountIdx(index).orElseThrow();
+        Long index = accountRepository.findAccountByUserId(userId).orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 유저 없음")).getIdx();
+        return loginLogRepository.findLoginLogByAccountIdx(index).orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 loginLog 없음"));
     }
 
     public LoginLogDateDto registerLoginLog(String userId, LoginLogRegisterRequest loginLogRegisterRequest) {
-        Account account = accountRepository.findAccountByUserId(userId).orElseThrow();
+        Account account = accountRepository.findAccountByUserId(userId).orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 유저 없음"));
 
         LocalDateTime localDateTime = LocalDateTime.now();
 
