@@ -18,16 +18,19 @@ public class Profile {
     private Long accountIdx;
     @Column(name = "image_path")
     private String imagePath;
-
+    @MapsId
     @OneToOne
-    @MapsId("accountIdx")
     @JoinColumn(name = "account_idx")
     private Account account;
 
     @Builder
     public Profile(String imagePath, Account account) {
         this.account = account;
-        this.accountIdx = account.getIdx();
+//        this.accountIdx = account.getIdx();
+        this.imagePath = imagePath;
+    }
+
+    public void modifyImagePath(String imagePath) {
         this.imagePath = imagePath;
     }
 }

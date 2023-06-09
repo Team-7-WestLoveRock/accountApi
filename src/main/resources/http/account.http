@@ -27,3 +27,34 @@ Content-Type: application/json
 }
 
 ###
+
+PUT /account/api/accounts/westloverock
+Host: localhost:1999
+Content-Type: application/json
+
+{
+    "userId": "westloverock",
+    "password": "westloverockPassword",
+    "name": "서정석",
+    "nickname": "서경석",
+    "email": "westloverock@github.com",
+    "phoneNumber": null
+}
+
+###
+
+GET /account/api/accounts/email/westloverock@github.com
+Host: localhost:1999
+Content-Type: application/json
+
+###
+
+POST /account/api/accounts/westloverock/profile
+Host: localhost:1999
+Content-Type: application/json
+
+{
+  "imagePath": "/src/static/useridProfileImage"
+}
+
+###

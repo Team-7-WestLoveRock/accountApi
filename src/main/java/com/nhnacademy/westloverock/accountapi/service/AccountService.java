@@ -5,8 +5,10 @@ import com.nhnacademy.westloverock.accountapi.entity.Account;
 import com.nhnacademy.westloverock.accountapi.repository.AccountRepository;
 import com.nhnacademy.westloverock.accountapi.request.AccountRegisterRequest;
 import com.nhnacademy.westloverock.accountapi.request.AccountStateRequest;
+import com.nhnacademy.westloverock.accountapi.request.AccountUpdateRequest;
 import com.nhnacademy.westloverock.accountapi.response.AccountInformationDto;
-import com.nhnacademy.westloverock.accountapi.response.AccountStateDto;
+import com.nhnacademy.westloverock.accountapi.response.AccountUpdateDto;
+import com.nhnacademy.westloverock.accountapi.response.EmailResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -56,5 +58,27 @@ public class AccountService {
                 .build();
 
         accountRepository.save(account);
+    }
+
+    public AccountUpdateDto updateAccount(String userId, AccountUpdateRequest accountUpdateRequest) {
+        Optional<Account> optionalAccount = accountRepository.findAccountByUserId(userId);
+        if (Objects.isNull(optionalAccount)) {
+            // ToDo customError 작성
+            throw new NoSuchElementException("아이디에 해당하는 유저 없음");
+        }
+        Account account = optionalAccount.get();
+        account.modifyInformation(accountUpdateRequest);
+        accountRepository.save(account);
+
+        Optional<AccountUpdateDto> optionalAccountUpdateDto = accountRepository.findAccountUpdateDtoByUserId(userId);
+        if (Objects.isNull(optionalAccountUpdateDto)) {
+            // ToDo customError 작성
+            throw new NoSuchElementException("아이디에 해당하는 유저 없음");
+        }
+        return optionalAccountUpdateDto.get();
+    }
+
+    public EmailResponseDto findIdByEmail(String email) {
+        return accountRepository.findEmailResponseDtoByEmail(email).orElseThrow();
     }
 }

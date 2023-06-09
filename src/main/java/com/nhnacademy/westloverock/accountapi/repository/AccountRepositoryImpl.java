@@ -7,4 +7,10 @@ public class AccountRepositoryImpl extends QuerydslRepositorySupport implements 
     public AccountRepositoryImpl() {
         super(Account.class);
     }
+
+//    @Override
+//    public Account findAccountById() {
+//        QAccount account = QAccount.account;
+//        return null;
+//    }
 }
