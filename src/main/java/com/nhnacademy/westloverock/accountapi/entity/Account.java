@@ -1,8 +1,8 @@
 package com.nhnacademy.westloverock.accountapi.entity;
 
 import com.nhnacademy.westloverock.accountapi.domain.State;
-import com.nhnacademy.westloverock.accountapi.request.AccountStateRequest;
-import com.nhnacademy.westloverock.accountapi.request.AccountUpdateRequest;
+import com.nhnacademy.westloverock.accountapi.dto.request.AccountStateRequest;
+import com.nhnacademy.westloverock.accountapi.dto.request.AccountUpdateRequest;
 import lombok.*;
 
 import javax.persistence.*;

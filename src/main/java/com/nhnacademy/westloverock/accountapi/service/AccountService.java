@@ -2,10 +2,10 @@ package com.nhnacademy.westloverock.accountapi.service;
 
 import com.nhnacademy.westloverock.accountapi.domain.State;
 import com.nhnacademy.westloverock.accountapi.entity.Account;
-import com.nhnacademy.westloverock.accountapi.repository.AccountRepository;
-import com.nhnacademy.westloverock.accountapi.request.AccountRegisterRequest;
-import com.nhnacademy.westloverock.accountapi.request.AccountStateRequest;
-import com.nhnacademy.westloverock.accountapi.request.AccountUpdateRequest;
+import com.nhnacademy.westloverock.accountapi.dto.repository.AccountRepository;
+import com.nhnacademy.westloverock.accountapi.dto.request.AccountRegisterRequest;
+import com.nhnacademy.westloverock.accountapi.dto.request.AccountStateRequest;
+import com.nhnacademy.westloverock.accountapi.dto.request.AccountUpdateRequest;
 import com.nhnacademy.westloverock.accountapi.response.AccountInformationDto;
 import com.nhnacademy.westloverock.accountapi.response.AccountUpdateDto;
 import com.nhnacademy.westloverock.accountapi.response.EmailResponseDto;

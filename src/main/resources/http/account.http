@@ -58,3 +58,19 @@ Content-Type: application/json
 }
 
 ###
+
+GET /account/api/accounts/westloverock/loginLogs
+Host: localhost:1999
+Content-Type: application/json
+
+###
+
+POST /account/api/accounts/westloverock/loginLog
+Host: localhost:1999
+Content-Type: application/json
+
+{
+  "ipAddress": "127.0.0.1"
+}
+
+###
