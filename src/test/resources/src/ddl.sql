@@ -1,3 +1,7 @@
+DROP TABLE IF EXISTS Login_Logs;
+DROP TABLE IF EXISTS Profiles;
+DROP TABLE IF EXISTS Accounts;
+
 create table if not exists Accounts
 (
     idx         bigint auto_increment

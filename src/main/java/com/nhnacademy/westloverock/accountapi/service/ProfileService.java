@@ -5,6 +5,7 @@ import com.nhnacademy.westloverock.accountapi.entity.Profile;
 import com.nhnacademy.westloverock.accountapi.dto.repository.AccountRepository;
 import com.nhnacademy.westloverock.accountapi.dto.repository.ProfileRepository;
 import com.nhnacademy.westloverock.accountapi.dto.request.ProfileImagePathRequest;
+import com.nhnacademy.westloverock.accountapi.exception.ObjectNotFound;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,15 +18,13 @@ public class ProfileService {
     private final AccountRepository accountRepository;
 
     public void updateImagePath(String userId, ProfileImagePathRequest profileImagePathRequest) {
-        Account account = accountRepository.findAccountByUserId(userId).orElseThrow();
+        Account account = accountRepository.findAccountByUserId(userId).orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 유저 없음"));
 
         Profile profile = Profile.builder()
                 .account(account)
                 .imagePath(profileImagePathRequest.getImagePath())
                 .build();
-//        Profile profile = new Profile(account.getIdx(), profileImagePathRequest.getImagePath(), account);
 
         profileRepository.save(profile);
-        // ToDo email로 user_id만 가져온다
     }
 }

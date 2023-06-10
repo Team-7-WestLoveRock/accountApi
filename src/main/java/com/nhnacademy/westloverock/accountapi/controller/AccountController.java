@@ -2,19 +2,22 @@ package com.nhnacademy.westloverock.accountapi.controller;
 
 import com.nhnacademy.westloverock.accountapi.dto.request.AccountRegisterRequest;
 import com.nhnacademy.westloverock.accountapi.dto.request.AccountStateRequest;
-import com.nhnacademy.westloverock.accountapi.dto.request.AccountUpdateRequest;
 import com.nhnacademy.westloverock.accountapi.response.AccountInformationDto;
 import com.nhnacademy.westloverock.accountapi.response.AccountUpdateDto;
 import com.nhnacademy.westloverock.accountapi.response.EmailResponseDto;
 import com.nhnacademy.westloverock.accountapi.service.AccountService;
+import com.nhnacademy.westloverock.accountapi.util.CatchMissingValueUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.Map;
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/account/api/accounts")
@@ -28,25 +31,30 @@ public class AccountController {
     }
 
     @PostMapping("/{userId}")
-    public HttpEntity<Map<String, String>> updateAccountState(@PathVariable String userId, @RequestBody AccountStateRequest accountStateRequest) {
+    public HttpEntity<Map<String, String>> updateAccountState(@PathVariable String userId, @RequestBody @Valid AccountStateRequest accountStateRequest, BindingResult bindingResult) {
+
+        CatchMissingValueUtils.throwMissingValue(bindingResult);
         return new ResponseEntity<>(Map.of("state", accountService.updateAccountState(userId, accountStateRequest).getName()), HttpStatus.OK);
     }
 
     @PostMapping
-    public HttpEntity<Map<String, LocalDate>> createAccount(@RequestBody AccountRegisterRequest accountRegisterRequest) {
+    public HttpEntity<Map<String, LocalDate>> createAccount(@RequestBody @Valid AccountRegisterRequest accountRegisterRequest, BindingResult bindingResult) {
+        CatchMissingValueUtils.throwMissingValue(bindingResult);
         accountService.saveAccount(accountRegisterRequest);
-        // ToDo userId가 unique이기 때문에 userId가 같다면 예외 발생
         return new ResponseEntity<>(Map.of("createdAt", LocalDate.now()), HttpStatus.CREATED);
     }
 
     @PutMapping("/{userId}")
-    public HttpEntity<AccountUpdateDto> updateAccountInformation(@PathVariable String userId, @RequestBody AccountUpdateRequest accountUpdateRequest) {
-        return new ResponseEntity<>(accountService.updateAccount(userId, accountUpdateRequest), HttpStatus.OK);
+    public HttpEntity<AccountUpdateDto> updateAccountInformation(@PathVariable String userId, @RequestBody @Valid AccountRegisterRequest accountRegisterRequest, BindingResult bindingResult) {
+        CatchMissingValueUtils.throwMissingValue(bindingResult);
+        return new ResponseEntity<>(accountService.updateAccount(userId, accountRegisterRequest), HttpStatus.OK);
     }
 
     @GetMapping("/email/{email}")
-    public HttpEntity<EmailResponseDto> findIdByEmail(@PathVariable String email) {
+    public HttpEntity<Optional<EmailResponseDto>> findIdByEmail(@PathVariable String email) {
         return new ResponseEntity<>(accountService.findIdByEmail(email), HttpStatus.OK);
     }
+
+
 
 }

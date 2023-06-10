@@ -1,13 +1,11 @@
 package com.nhnacademy.westloverock.accountapi.domain;
 
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.Arrays;
 @Getter
 public enum State {
 
-    // ToDo 맛이 갈 것 같아
     ACTIVE("활동"),
     WITHDRAWAL("탈퇴"),
     DORMANCY("휴면");
@@ -20,7 +18,6 @@ public enum State {
         return Arrays.stream(State.values())
                 .filter(s -> s.getName().equals(name))
                 .findFirst()
-                // ToDo custom error
                 .orElseThrow(() -> new RuntimeException(""));
     }
 

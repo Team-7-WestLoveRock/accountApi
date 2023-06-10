@@ -1,10 +1,16 @@
 package com.nhnacademy.westloverock.accountapi.dto.request;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 
 @Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class AccountRegisterRequest {
     @NotNull
     private String userId;
@@ -12,8 +18,8 @@ public class AccountRegisterRequest {
     private String password;
     @NotNull
     private String name;
-    private String nickname;
     @NotNull
     private String email;
+    private String nickname;
     private String phoneNumber;
 }
