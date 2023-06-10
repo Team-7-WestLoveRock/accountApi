@@ -1,11 +1,11 @@
 package com.nhnacademy.westloverock.accountapi.service;
 
 import com.nhnacademy.westloverock.accountapi.domain.State;
-import com.nhnacademy.westloverock.accountapi.entity.Account;
 import com.nhnacademy.westloverock.accountapi.dto.repository.AccountRepository;
 import com.nhnacademy.westloverock.accountapi.dto.request.AccountRegisterRequest;
 import com.nhnacademy.westloverock.accountapi.dto.request.AccountStateRequest;
-import com.nhnacademy.westloverock.accountapi.dto.request.AccountUpdateRequest;
+import com.nhnacademy.westloverock.accountapi.entity.Account;
+import com.nhnacademy.westloverock.accountapi.exception.NotMatchState;
 import com.nhnacademy.westloverock.accountapi.exception.ObjectNotFound;
 import com.nhnacademy.westloverock.accountapi.response.AccountInformationDto;
 import com.nhnacademy.westloverock.accountapi.response.AccountUpdateDto;
@@ -13,8 +13,6 @@ import com.nhnacademy.westloverock.accountapi.response.EmailResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.NoSuchElementException;
-import java.util.Objects;
 import java.util.Optional;
 
 @Service
@@ -23,26 +21,16 @@ public class AccountService {
     public final AccountRepository accountRepository;
 
     public AccountInformationDto findAccount(String userId) {
-        Optional<AccountInformationDto> accountInformationDto = accountRepository.findAccountInformationDtoByUserId(userId);
-        if (Objects.isNull(accountInformationDto)) {
-            // ToDo customError 작성
-            throw new ObjectNotFound("아이디에 해당하는 유저 없음");
-        }
-        return accountInformationDto.get();
+        return accountRepository.findAccountInformationDtoByUserId(userId)
+                .orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 AccountInformationDto 없음"));
     }
 
     public State updateAccountState(String userId, AccountStateRequest accountStateRequest) {
-        // ToDo 올바른 enum값이 들어왔는지 검사하는 코드 필요
-//        if (!State.matches(accountStateRequest.getState())) {
-//            throw new RuntimeException();
-//        }
-        Optional<Account> objectAccount = accountRepository.findAccountByUserId(userId);
-        if (Objects.isNull(objectAccount)) {
-            // ToDo customError 작성
-            throw new ObjectNotFound("아이디에 해당하는 유저 없음");
+        if (!State.matches(accountStateRequest.getState())) {
+            throw new NotMatchState("없는 상태입니다.");
         }
+        Account account = accountRepository.findAccountByUserId(userId).orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 유저 없음"));
 
-        Account account = objectAccount.get();
         account.modifyStatus(accountStateRequest);
         accountRepository.save(account);
         return account.getState();
@@ -61,25 +49,17 @@ public class AccountService {
         accountRepository.save(account);
     }
 
-    public AccountUpdateDto updateAccount(String userId, AccountUpdateRequest accountUpdateRequest) {
-        Optional<Account> optionalAccount = accountRepository.findAccountByUserId(userId);
-        if (Objects.isNull(optionalAccount)) {
-            // ToDo customError 작성
-            throw new ObjectNotFound("아이디에 해당하는 유저 없음");
-        }
-        Account account = optionalAccount.get();
-        account.modifyInformation(accountUpdateRequest);
+    public AccountUpdateDto updateAccount(String userId, AccountRegisterRequest accountRegisterRequest) {
+        Account account = accountRepository.findAccountByUserId(userId).orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 유저 없음"));
+
+        account.modifyInformation(accountRegisterRequest);
         accountRepository.save(account);
 
-        Optional<AccountUpdateDto> optionalAccountUpdateDto = accountRepository.findAccountUpdateDtoByUserId(userId);
-        if (Objects.isNull(optionalAccountUpdateDto)) {
-            // ToDo customError 작성
-            throw new ObjectNotFound("아이디에 해당하는 유저 없음");
-        }
-        return optionalAccountUpdateDto.get();
+        return accountRepository.findAccountUpdateDtoByUserId(userId).orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 AccountUpdateDto 없음"));
+
     }
 
-    public EmailResponseDto findIdByEmail(String email) {
-        return accountRepository.findEmailResponseDtoByEmail(email).orElseThrow();
+    public Optional<EmailResponseDto> findIdByEmail(String email) {
+        return accountRepository.findEmailResponseDtoByEmail(email);
     }
 }

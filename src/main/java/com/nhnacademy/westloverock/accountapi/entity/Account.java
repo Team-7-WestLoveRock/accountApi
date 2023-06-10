@@ -1,8 +1,8 @@
 package com.nhnacademy.westloverock.accountapi.entity;
 
 import com.nhnacademy.westloverock.accountapi.domain.State;
+import com.nhnacademy.westloverock.accountapi.dto.request.AccountRegisterRequest;
 import com.nhnacademy.westloverock.accountapi.dto.request.AccountStateRequest;
-import com.nhnacademy.westloverock.accountapi.dto.request.AccountUpdateRequest;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,7 +12,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
-@EqualsAndHashCode
 @ToString
 @Entity
 @Table(name = "Accounts")
@@ -43,7 +42,6 @@ public class Account {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    // ToDo 값이 정확히 들어오는지 확인 요망
     @OneToMany(mappedBy = "account")
     List<LoginLog> loginLogList = new ArrayList<>();
 
@@ -60,12 +58,14 @@ public class Account {
     public void modifyStatus(AccountStateRequest accountStateRequest){
         this.state = State.getState(accountStateRequest.getState());
     }
-    public void modifyInformation(AccountUpdateRequest accountUpdateRequest){
-        this.userId = accountUpdateRequest.getUserId();
-        this.password = accountUpdateRequest.getPassword();
-        this.name = accountUpdateRequest.getName();
-        this.nickname = accountUpdateRequest.getNickname();
-        this.email = accountUpdateRequest.getEmail();
-        this.phoneNumber = accountUpdateRequest.getPhoneNumber();
+    public void modifyInformation(AccountRegisterRequest accountRegisterRequest){
+        this.userId = accountRegisterRequest.getUserId();
+        this.password = accountRegisterRequest.getPassword();
+        this.name = accountRegisterRequest.getName();
+        this.nickname = accountRegisterRequest.getNickname();
+        this.email = accountRegisterRequest.getEmail();
+        this.phoneNumber = accountRegisterRequest.getPhoneNumber();
     }
+
+
 }

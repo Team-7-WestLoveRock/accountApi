@@ -26,7 +26,6 @@ public class Profile {
     @Builder
     public Profile(String imagePath, Account account) {
         this.account = account;
-//        this.accountIdx = account.getIdx();
         this.imagePath = imagePath;
     }
 

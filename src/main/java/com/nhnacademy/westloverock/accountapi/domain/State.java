@@ -1,7 +1,6 @@
 package com.nhnacademy.westloverock.accountapi.domain;
 
 import lombok.Getter;
-import lombok.Setter;
 
 import java.util.Arrays;
 @Getter
@@ -19,7 +18,6 @@ public enum State {
         return Arrays.stream(State.values())
                 .filter(s -> s.getName().equals(name))
                 .findFirst()
-                // ToDo custom error
                 .orElseThrow(() -> new RuntimeException(""));
     }
 

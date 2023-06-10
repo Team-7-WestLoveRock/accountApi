@@ -3,6 +3,5 @@ package com.nhnacademy.westloverock.accountapi.dto.repository;
 import com.nhnacademy.westloverock.accountapi.entity.Profile;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface ProfileRepository extends JpaRepository<Profile, Long>, ProfileRepositoryCustom {
-//    Optional<>
+public interface ProfileRepository extends JpaRepository<Profile, Long> {
 }

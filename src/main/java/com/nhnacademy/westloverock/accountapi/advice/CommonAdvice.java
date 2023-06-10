@@ -24,6 +24,9 @@ public class CommonAdvice {
                 .build();
 
         return ResponseEntity.status(ex.getStatus()).body(error);
+
     }
+
+    // ToDo 404를 다루는 handler를 만들기
 
 }
