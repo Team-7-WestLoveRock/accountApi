@@ -1,14 +1,11 @@
 package com.nhnacademy.westloverock.accountapi.dto.response;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 @Getter
 @AllArgsConstructor
 @Builder
-@Setter
+@Generated
 public class AccountUpdateDto {
     private String userId;
     private String password;
