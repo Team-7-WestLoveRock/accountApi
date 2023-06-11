@@ -12,14 +12,10 @@ import javax.validation.constraints.NotNull;
 @Builder
 @Setter
 public class AccountUpdateDto {
-    @NotNull
     private String userId;
-    @NotNull
     private String password;
-    @NotNull
     private String name;
     private String nickname;
-    @NotNull
     private String email;
     private String phoneNumber;
 }

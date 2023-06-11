@@ -61,9 +61,14 @@ public class AccountService {
 
         account.modifyInformation(accountRegisterRequest);
 
-        return accountRepository.findAccountUpdateDtoByUserId(account.getUserId())
-                .orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 AccountUpdateDto 없음"));
-
+        return AccountUpdateDto.builder()
+                .userId(account.getUserId())
+                .password(account.getPassword())
+                .name(account.getName())
+                .nickname(account.getNickname())
+                .email(account.getEmail())
+                .phoneNumber(account.getPhoneNumber())
+                .build();
     }
 
     public Optional<EmailResponseDto> findIdByEmail(String email) {

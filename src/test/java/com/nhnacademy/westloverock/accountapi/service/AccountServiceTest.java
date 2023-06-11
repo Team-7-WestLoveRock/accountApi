@@ -149,8 +149,6 @@ class AccountServiceTest {
                 .phoneNumber("010-1234-1234")
                 .build();
 
-        when(accountRepository.findAccountUpdateDtoByUserId(accountRegisterRequest.getUserId())).thenReturn(Optional.of(accountUpdateDto));
-
         assertThat(accountService.updateAccount(account.getUserId(), accountRegisterRequest).getUserId()).isEqualTo(accountUpdateDto.getUserId());
         assertThat(accountService.updateAccount(account.getUserId(), accountRegisterRequest).getPassword()).isEqualTo(accountUpdateDto.getPassword());
         assertThat(accountService.updateAccount(account.getUserId(), accountRegisterRequest).getName()).isEqualTo(accountUpdateDto.getName());
