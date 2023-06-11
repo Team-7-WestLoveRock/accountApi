@@ -28,12 +28,11 @@ import java.util.Map;
 import java.util.Optional;
 
 import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
-@ExtendWith(MockitoExtension.class)
 @WebMvcTest(AccountController.class)
 class AccountControllerTest {
     @Autowired
@@ -49,15 +48,17 @@ class AccountControllerTest {
         ProjectionFactory projectionFactory = new SpelAwareProxyProjectionFactory();
         AccountInformationDto accountInformationDto = projectionFactory.createProjection(AccountInformationDto.class,
                 Map.of("userId", "asd", "password", "qweqweqweqw", "email", "asdad@naver.com"));
-        when(accountService.findAccount(any())).thenReturn(accountInformationDto);
+        when(accountService.findAccount("asd")).thenReturn(accountInformationDto);
 
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/account/api/accounts/westloverock")
-                .content(objectMapper.writeValueAsString(accountInformationDto))
-                .contentType(MediaType.APPLICATION_JSON);
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/account/api/accounts/asd")
+                .accept(MediaType.APPLICATION_JSON);
+
 
         mockMvc.perform(requestBuilder)
                 .andExpect(status().isOk())
+                .andDo(print())
                 .andExpect(jsonPath("$.userId").value("asd"));
+
     }
 
     @Test
@@ -148,7 +149,7 @@ class AccountControllerTest {
         ProjectionFactory projectionFactory = new SpelAwareProxyProjectionFactory();
         EmailResponseDto emailResponseDto = projectionFactory.createProjection(EmailResponseDto.class,
                 Map.of("userId", "qwe"));
-        when(accountService.findIdByEmail(any())).thenReturn(Optional.of(emailResponseDto));
+        when(accountService.findIdByEmail("asd@naver.com")).thenReturn(Optional.of(emailResponseDto));
 
         RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/account/api/accounts/email/asd@naver.com")
                 .contentType(MediaType.APPLICATION_JSON);
@@ -157,5 +158,18 @@ class AccountControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.userId").value(emailResponseDto.getUserId()));
+    }
+
+    @Test
+    @DisplayName("유저 유무 확인 - 정상")
+    void existByUserId() throws Exception {
+        when(accountService.existByUserId("westloverock")).thenReturn(true);
+
+        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/account/api/accounts/westloverock/exist");
+
+        mockMvc.perform(requestBuilder)
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string("true"));
     }
 }

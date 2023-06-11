@@ -74,4 +74,8 @@ public class AccountService {
     public Optional<EmailResponseDto> findIdByEmail(String email) {
         return accountRepository.findEmailResponseDtoByEmail(email);
     }
+
+    public boolean existByUserId(String userId) {
+        return accountRepository.existsAccountByUserId(userId);
+    }
 }

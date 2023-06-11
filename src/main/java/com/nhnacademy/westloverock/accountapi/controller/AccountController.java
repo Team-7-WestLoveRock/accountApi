@@ -55,6 +55,8 @@ public class AccountController {
         return new ResponseEntity<>(accountService.findIdByEmail(email), HttpStatus.OK);
     }
 
-
-
+    @GetMapping("{userId}/exist")
+    public HttpEntity<Boolean> existById(@PathVariable String userId) {
+        return new ResponseEntity<>(accountService.existByUserId(userId), HttpStatus.OK);
+    }
 }
