@@ -10,6 +10,7 @@ import java.time.LocalDateTime;
 @Getter
 @EqualsAndHashCode
 @Entity
+@Generated
 @Table(name = "Login_Logs")
 public class LoginLog {
     @Id

@@ -50,12 +50,15 @@ public class AccountService {
     }
 
     public AccountUpdateDto updateAccount(String userId, AccountRegisterRequest accountRegisterRequest) {
-        Account account = accountRepository.findAccountByUserId(userId).orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 유저 없음"));
+        Account account = accountRepository.findAccountByUserId(userId)
+                .orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 유저 없음"));
 
         account.modifyInformation(accountRegisterRequest);
+
         accountRepository.save(account);
 
-        return accountRepository.findAccountUpdateDtoByUserId(userId).orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 AccountUpdateDto 없음"));
+        return accountRepository.findAccountUpdateDtoByUserId(account.getUserId())
+                .orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 AccountUpdateDto 없음"));
 
     }
 

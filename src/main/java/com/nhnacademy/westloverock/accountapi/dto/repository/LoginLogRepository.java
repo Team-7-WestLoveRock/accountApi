@@ -9,4 +9,6 @@ import java.util.Optional;
 public interface LoginLogRepository extends JpaRepository<LoginLog, Long> {
     Optional<LoginLogDto> findLoginLogByAccountIdx(Long index);
 
+    Optional<LoginLogDto> findLoginLogByAccount_UserId(String userId);
+
 }

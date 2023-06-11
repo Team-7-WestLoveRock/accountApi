@@ -14,6 +14,7 @@ import java.util.List;
 @Getter
 @ToString
 @Entity
+@Generated
 @Table(name = "Accounts")
 public class Account {
     @Id

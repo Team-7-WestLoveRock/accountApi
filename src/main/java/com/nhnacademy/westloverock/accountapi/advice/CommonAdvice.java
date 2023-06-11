@@ -27,6 +27,4 @@ public class CommonAdvice {
 
     }
 
-    // ToDo 404를 다루는 handler를 만들기
-
 }

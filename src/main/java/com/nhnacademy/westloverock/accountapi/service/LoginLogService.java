@@ -21,27 +21,24 @@ public class LoginLogService {
     private final AccountRepository accountRepository;
 
     public LoginLogDto findLoginLogInform(String userId) {
-        Long index = accountRepository.findAccountByUserId(userId).orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 유저 없음")).getIdx();
-        return loginLogRepository.findLoginLogByAccountIdx(index).orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 loginLog 없음"));
+        return loginLogRepository.findLoginLogByAccount_UserId(userId)
+                .orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 loginLog 없음"));
     }
 
     public LoginLogDateDto registerLoginLog(String userId, LoginLogRegisterRequest loginLogRegisterRequest) {
         Account account = accountRepository.findAccountByUserId(userId).orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 유저 없음"));
 
-        LocalDateTime localDateTime = LocalDateTime.now();
-
-        LoginLog loginLog = loginLogRepository.findById(account.getIdx()).orElse(LoginLog.builder()
-                                                                    .account(account)
-                                                                    .ipAddress(loginLogRegisterRequest.getIpAddress())
-                                                                    .loginDate(localDateTime)
-                                                                    .build());
+        LoginLog loginLog = LoginLog.builder()
+                .account(account)
+                .ipAddress(loginLogRegisterRequest.getIpAddress())
+                .loginDate(LocalDateTime.now())
+                .build();
 
         loginLogRepository.save(loginLog);
 
         return LoginLogDateDto.builder()
-                .loginDate(localDateTime)
+                .loginDate(loginLog.getLoginDate())
                 .build();
-
     }
 
 
