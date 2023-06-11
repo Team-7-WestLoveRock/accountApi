@@ -1,4 +1,4 @@
-package com.nhnacademy.westloverock.accountapi.dto.repository;
+package com.nhnacademy.westloverock.accountapi.repository;
 
 import com.nhnacademy.westloverock.accountapi.entity.Profile;
 import org.springframework.data.jpa.repository.JpaRepository;

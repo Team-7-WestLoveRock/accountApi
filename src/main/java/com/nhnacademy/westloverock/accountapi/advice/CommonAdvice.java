@@ -2,7 +2,7 @@ package com.nhnacademy.westloverock.accountapi.advice;
 
 
 import com.nhnacademy.westloverock.accountapi.exception.ApiException;
-import com.nhnacademy.westloverock.accountapi.response.ErrorResponse;
+import com.nhnacademy.westloverock.accountapi.dto.response.ErrorResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;

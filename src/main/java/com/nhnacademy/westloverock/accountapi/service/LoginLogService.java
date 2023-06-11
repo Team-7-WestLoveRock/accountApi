@@ -2,12 +2,12 @@ package com.nhnacademy.westloverock.accountapi.service;
 
 import com.nhnacademy.westloverock.accountapi.entity.Account;
 import com.nhnacademy.westloverock.accountapi.entity.LoginLog;
-import com.nhnacademy.westloverock.accountapi.dto.repository.AccountRepository;
-import com.nhnacademy.westloverock.accountapi.dto.repository.LoginLogRepository;
+import com.nhnacademy.westloverock.accountapi.repository.AccountRepository;
+import com.nhnacademy.westloverock.accountapi.repository.LoginLogRepository;
 import com.nhnacademy.westloverock.accountapi.dto.request.LoginLogRegisterRequest;
 import com.nhnacademy.westloverock.accountapi.exception.ObjectNotFound;
-import com.nhnacademy.westloverock.accountapi.response.LoginLogDateDto;
-import com.nhnacademy.westloverock.accountapi.response.LoginLogDto;
+import com.nhnacademy.westloverock.accountapi.dto.response.LoginLogDateDto;
+import com.nhnacademy.westloverock.accountapi.dto.response.LoginLogDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

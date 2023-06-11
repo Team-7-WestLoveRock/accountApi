@@ -1,11 +1,9 @@
-package com.nhnacademy.westloverock.accountapi.response;
+package com.nhnacademy.westloverock.accountapi.dto.response;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
-
-import javax.validation.constraints.NotNull;
 
 @Getter
 @AllArgsConstructor

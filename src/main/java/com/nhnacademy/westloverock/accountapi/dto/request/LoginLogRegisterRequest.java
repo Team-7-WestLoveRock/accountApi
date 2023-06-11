@@ -1,13 +1,14 @@
 package com.nhnacademy.westloverock.accountapi.dto.request;
 
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-
-import javax.validation.constraints.NotNull;
+import lombok.NoArgsConstructor;
 
 @Getter
+@NoArgsConstructor
 @Builder
+@AllArgsConstructor
 public class LoginLogRegisterRequest {
-    @NotNull
     private String ipAddress;
 }

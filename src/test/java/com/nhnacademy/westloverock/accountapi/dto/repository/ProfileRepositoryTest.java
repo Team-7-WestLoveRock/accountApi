@@ -1,8 +1,8 @@
 package com.nhnacademy.westloverock.accountapi.dto.repository;
 
 import com.nhnacademy.westloverock.accountapi.domain.State;
-import com.nhnacademy.westloverock.accountapi.dto.repository.AccountRepository;
-import com.nhnacademy.westloverock.accountapi.dto.repository.ProfileRepository;
+import com.nhnacademy.westloverock.accountapi.repository.AccountRepository;
+import com.nhnacademy.westloverock.accountapi.repository.ProfileRepository;
 import com.nhnacademy.westloverock.accountapi.entity.Account;
 import com.nhnacademy.westloverock.accountapi.entity.Profile;
 import org.junit.jupiter.api.*;

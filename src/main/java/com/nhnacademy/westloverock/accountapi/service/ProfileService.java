@@ -2,8 +2,8 @@ package com.nhnacademy.westloverock.accountapi.service;
 
 import com.nhnacademy.westloverock.accountapi.entity.Account;
 import com.nhnacademy.westloverock.accountapi.entity.Profile;
-import com.nhnacademy.westloverock.accountapi.dto.repository.AccountRepository;
-import com.nhnacademy.westloverock.accountapi.dto.repository.ProfileRepository;
+import com.nhnacademy.westloverock.accountapi.repository.AccountRepository;
+import com.nhnacademy.westloverock.accountapi.repository.ProfileRepository;
 import com.nhnacademy.westloverock.accountapi.dto.request.ProfileImagePathRequest;
 import com.nhnacademy.westloverock.accountapi.exception.ObjectNotFound;
 import lombok.RequiredArgsConstructor;
