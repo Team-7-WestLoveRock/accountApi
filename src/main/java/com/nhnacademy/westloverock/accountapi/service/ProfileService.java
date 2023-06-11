@@ -12,11 +12,12 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
-@Transactional
+@Transactional(readOnly = true)
 public class ProfileService {
     private final ProfileRepository profileRepository;
     private final AccountRepository accountRepository;
 
+    @Transactional
     public void updateImagePath(String userId, ProfileImagePathRequest profileImagePathRequest) {
         Account account = accountRepository.findAccountByUserId(userId).orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 유저 없음"));
 

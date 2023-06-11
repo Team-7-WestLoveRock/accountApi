@@ -10,11 +10,13 @@ import com.nhnacademy.westloverock.accountapi.response.LoginLogDateDto;
 import com.nhnacademy.westloverock.accountapi.response.LoginLogDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 
 @Service
 @RequiredArgsConstructor
+@Transactional(readOnly = true)
 public class LoginLogService {
     private final LoginLogRepository loginLogRepository;
 
@@ -25,6 +27,7 @@ public class LoginLogService {
                 .orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 loginLog 없음"));
     }
 
+    @Transactional
     public LoginLogDateDto registerLoginLog(String userId, LoginLogRegisterRequest loginLogRegisterRequest) {
         Account account = accountRepository.findAccountByUserId(userId).orElseThrow(() -> new ObjectNotFound("아이디에 해당하는 유저 없음"));
 

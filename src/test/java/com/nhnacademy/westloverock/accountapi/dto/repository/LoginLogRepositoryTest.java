@@ -1,14 +1,10 @@
 package com.nhnacademy.westloverock.accountapi.dto.repository;
 
 import com.nhnacademy.westloverock.accountapi.domain.State;
-import com.nhnacademy.westloverock.accountapi.dto.repository.AccountRepository;
-import com.nhnacademy.westloverock.accountapi.dto.repository.LoginLogRepository;
 import com.nhnacademy.westloverock.accountapi.entity.Account;
 import com.nhnacademy.westloverock.accountapi.entity.LoginLog;
 import com.nhnacademy.westloverock.accountapi.response.LoginLogDto;
 import org.junit.jupiter.api.*;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
@@ -17,8 +13,7 @@ import org.springframework.test.util.ReflectionTestUtils;
 
 import java.time.LocalDateTime;
 
-import static org.assertj.core.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
 @ActiveProfiles("dev")
@@ -170,7 +165,7 @@ class LoginLogRepositoryTest {
 
         loginLogRepository.save(loginLog);
 
-        LoginLogDto loginLogDto = loginLogRepository.findLoginLogByAccountIdx(loginLog.getAccountIdx()).get();
+        LoginLogDto loginLogDto = loginLogRepository.findLoginLogByAccount_UserId(account.getUserId()).get();
 
         assertThat(loginLogDto.getLoginDate()).isEqualTo(loginLog.getLoginDate());
         assertThat(loginLogDto.getIpAddress()).isEqualTo(loginLog.getIpAddress());
