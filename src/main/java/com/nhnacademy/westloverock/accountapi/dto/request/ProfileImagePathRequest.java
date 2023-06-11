@@ -2,6 +2,8 @@ package com.nhnacademy.westloverock.accountapi.dto.request;
 
 import lombok.*;
 
+import javax.validation.constraints.NotNull;
+
 
 @Getter
 @Builder
@@ -9,5 +11,6 @@ import lombok.*;
 @NoArgsConstructor
 @Generated
 public class ProfileImagePathRequest {
+    @NotNull
     private String imagePath;
 }
