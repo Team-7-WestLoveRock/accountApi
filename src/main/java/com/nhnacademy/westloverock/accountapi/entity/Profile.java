@@ -10,6 +10,7 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @ToString
 @Entity
+@Generated
 @Table(name = "Profiles")
 public class Profile {
 

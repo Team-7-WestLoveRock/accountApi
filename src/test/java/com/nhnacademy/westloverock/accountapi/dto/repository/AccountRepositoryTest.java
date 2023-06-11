@@ -12,6 +12,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.util.ReflectionTestUtils;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
@@ -139,6 +140,8 @@ class AccountRepositoryTest {
     }
 
     @Test
+    @DisplayName("Account를 userId로 조회")
+    @Order(5)
     void findAccountByUserId() {
         Account account = Account.builder()                             
                 .userId("만석짱짱")
@@ -156,6 +159,8 @@ class AccountRepositoryTest {
     }
 
     @Test
+    @DisplayName("UserId로 AccountInformationDto조회")
+    @Order(6)
     void findAccountInformationDtoByUserId() {
         Account account = Account.builder()
                 .userId("만석짱짱")
@@ -175,6 +180,8 @@ class AccountRepositoryTest {
     }
 
     @Test
+    @DisplayName("AccountUpdateDto를 UserId로 조회")
+    @Order(7)
     void findAccountUpdateDtoByUserId() {
         Account account = Account.builder()
                 .userId("만석짱짱")
@@ -197,6 +204,8 @@ class AccountRepositoryTest {
     }
 
     @Test
+    @DisplayName("Email로 EmailResponseDto를 조회")
+    @Order(8)
     void findEmailResponseDtoByEmail() {
         Account account = Account.builder()
                 .userId("만석짱짱")
