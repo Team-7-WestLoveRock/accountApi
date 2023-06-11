@@ -1,14 +1,14 @@
 package com.nhnacademy.westloverock.accountapi.service;
 
 import com.nhnacademy.westloverock.accountapi.domain.State;
-import com.nhnacademy.westloverock.accountapi.dto.repository.AccountRepository;
+import com.nhnacademy.westloverock.accountapi.repository.AccountRepository;
 import com.nhnacademy.westloverock.accountapi.dto.request.AccountRegisterRequest;
 import com.nhnacademy.westloverock.accountapi.dto.request.AccountStateRequest;
 import com.nhnacademy.westloverock.accountapi.entity.Account;
 import com.nhnacademy.westloverock.accountapi.exception.ObjectNotFound;
-import com.nhnacademy.westloverock.accountapi.response.AccountInformationDto;
-import com.nhnacademy.westloverock.accountapi.response.AccountUpdateDto;
-import com.nhnacademy.westloverock.accountapi.response.EmailResponseDto;
+import com.nhnacademy.westloverock.accountapi.dto.response.AccountInformationDto;
+import com.nhnacademy.westloverock.accountapi.dto.response.AccountUpdateDto;
+import com.nhnacademy.westloverock.accountapi.dto.response.EmailResponseDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,7 +17,6 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.springframework.data.projection.ProjectionFactory;
 import org.springframework.data.projection.SpelAwareProxyProjectionFactory;
-import org.springframework.test.context.ActiveProfiles;
 
 import java.util.Map;
 import java.util.Optional;

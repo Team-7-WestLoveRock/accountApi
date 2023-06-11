@@ -1,8 +1,8 @@
 package com.nhnacademy.westloverock.accountapi.controller;
 
 import com.nhnacademy.westloverock.accountapi.dto.request.LoginLogRegisterRequest;
-import com.nhnacademy.westloverock.accountapi.response.LoginLogDateDto;
-import com.nhnacademy.westloverock.accountapi.response.LoginLogDto;
+import com.nhnacademy.westloverock.accountapi.dto.response.LoginLogDateDto;
+import com.nhnacademy.westloverock.accountapi.dto.response.LoginLogDto;
 import com.nhnacademy.westloverock.accountapi.service.LoginLogService;
 import com.nhnacademy.westloverock.accountapi.util.CatchMissingValueUtils;
 import lombok.RequiredArgsConstructor;

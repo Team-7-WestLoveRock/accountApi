@@ -1,4 +1,4 @@
-package com.nhnacademy.westloverock.accountapi.response;
+package com.nhnacademy.westloverock.accountapi.dto.response;
 
 public interface AccountInformationDto {
     String getUserId();

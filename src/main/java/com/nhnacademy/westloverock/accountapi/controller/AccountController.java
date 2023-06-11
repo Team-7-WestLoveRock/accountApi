@@ -2,9 +2,9 @@ package com.nhnacademy.westloverock.accountapi.controller;
 
 import com.nhnacademy.westloverock.accountapi.dto.request.AccountRegisterRequest;
 import com.nhnacademy.westloverock.accountapi.dto.request.AccountStateRequest;
-import com.nhnacademy.westloverock.accountapi.response.AccountInformationDto;
-import com.nhnacademy.westloverock.accountapi.response.AccountUpdateDto;
-import com.nhnacademy.westloverock.accountapi.response.EmailResponseDto;
+import com.nhnacademy.westloverock.accountapi.dto.response.AccountInformationDto;
+import com.nhnacademy.westloverock.accountapi.dto.response.AccountUpdateDto;
+import com.nhnacademy.westloverock.accountapi.dto.response.EmailResponseDto;
 import com.nhnacademy.westloverock.accountapi.service.AccountService;
 import com.nhnacademy.westloverock.accountapi.util.CatchMissingValueUtils;
 import lombok.RequiredArgsConstructor;
