@@ -1,11 +1,11 @@
 package com.nhnacademy.westloverock.accountapi.service;
 
-import com.nhnacademy.westloverock.accountapi.repository.AccountRepository;
-import com.nhnacademy.westloverock.accountapi.repository.LoginLogRepository;
 import com.nhnacademy.westloverock.accountapi.dto.request.LoginLogRegisterRequest;
+import com.nhnacademy.westloverock.accountapi.dto.response.LoginLogDto;
 import com.nhnacademy.westloverock.accountapi.entity.Account;
 import com.nhnacademy.westloverock.accountapi.exception.ObjectNotFound;
-import com.nhnacademy.westloverock.accountapi.dto.response.LoginLogDto;
+import com.nhnacademy.westloverock.accountapi.repository.AccountRepository;
+import com.nhnacademy.westloverock.accountapi.repository.LoginLogRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -17,10 +17,10 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
-import static org.springframework.test.web.servlet.result.StatusResultMatchersExtensionsKt.isEqualTo;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class LoginLogServiceTest {
