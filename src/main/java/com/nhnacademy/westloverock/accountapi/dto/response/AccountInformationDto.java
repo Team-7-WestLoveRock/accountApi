@@ -4,4 +4,5 @@ public interface AccountInformationDto {
     String getUserId();
     String getPassword();
     String getEmail();
+    String getState();
 }
