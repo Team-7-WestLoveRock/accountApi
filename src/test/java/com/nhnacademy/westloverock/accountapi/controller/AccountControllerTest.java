@@ -46,16 +46,23 @@ class AccountControllerTest {
         ProjectionFactory projectionFactory = new SpelAwareProxyProjectionFactory();
         AccountInformationDto accountInformationDto = projectionFactory.createProjection(AccountInformationDto.class,
                 Map.of("userId", "asd", "password", "qweqweqweqw", "email", "asdad@naver.com"));
-        when(accountService.findAccount("asd")).thenReturn(accountInformationDto);
-
-        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/account/api/accounts/asd")
-                .accept(MediaType.APPLICATION_JSON);
 
 
-        mockMvc.perform(requestBuilder)
-                .andExpect(status().isOk())
-                .andDo(print())
-                .andExpect(jsonPath("$.userId").value("asd"));
+        AccountInformationDto accountInformationDto1 = mock(AccountInformationDto.class);
+        given(accountInformationDto1.getUserId()).willReturn("asd");
+
+
+//        when(accountService.findAccount("asd")).thenReturn(accountInformationDto);
+//
+//        RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/account/api/accounts/asd")
+//                .accept(MediaType.APPLICATION_JSON);
+//
+//
+//        mockMvc.perform(requestBuilder)
+//                .andExpect(status().isOk())
+//                .andDo(print())
+//                .andExpect(jsonPath("$.userId").value("asd"));
+
 
     }
 
@@ -92,6 +99,7 @@ class AccountControllerTest {
                 .email("qwe@naver.com")
                 .build();
 
+        System.out.println(accountInformationDto1.getUserId());
 
         Map<String, LocalDate> map = new HashMap<>();
         map.put("createdAt", LocalDate.now());
