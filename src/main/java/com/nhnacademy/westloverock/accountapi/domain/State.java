@@ -23,6 +23,16 @@ public enum State {
 
     public static boolean matches(String name) {
         return Arrays.stream(State.values())
-                .anyMatch(s -> s.getName().equals(name));
+                .anyMatch(s -> s.getName().equals(name)) ||
+                matchesEnumValue(name);
+    }
+
+    public static Boolean matchesEnumValue(String name) {
+        try  {
+            State.valueOf(name);
+        }   catch (IllegalArgumentException i) {
+            return false;
+        }
+        return true;
     }
 }
