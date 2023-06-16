@@ -73,8 +73,8 @@ class AccountControllerTest {
         map.put("state", accountStateRequest.getState());
 
         RequestBuilder requestBuilder = MockMvcRequestBuilders.post("/account/api/accounts/westloverock")
-                        .content(objectMapper.writeValueAsString(accountStateRequest))
-                        .contentType(MediaType.APPLICATION_JSON);
+                .content(objectMapper.writeValueAsString(accountStateRequest))
+                .contentType(MediaType.APPLICATION_JSON);
         mockMvc.perform(requestBuilder)
                 .andDo(print())
                 .andExpect(status().isOk())
