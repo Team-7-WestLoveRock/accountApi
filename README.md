@@ -5,7 +5,10 @@
 - 인증 처리는 Gateway 서비스에 위임합니다.
 
 - 회원 정보를 제공하며, 회원의 상태(가입, 탈퇴, 휴면)를 관리합니다.
-  
+
+## ERD
+
+![accountapi-erd](https://github.com/Team-7-WestLoveRock/accountApi/assets/76582376/54ad9e91-f8bf-4b3a-8e0e-81a859ebcdba)
 <br>
 
 # API SPEC
